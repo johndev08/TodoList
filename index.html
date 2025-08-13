@@ -57,27 +57,34 @@
       }
       .htmlbox {
         border: 1px solid #bebebe;
-        padding: 0 .5rem;
+        padding: 0 0.5rem;
         height: 400px;
         overflow-y: scroll;
       }
-     span{
-      color: red;
-      font-size: .8rem;
-      margin-left: .5rem;
-     }
+      #error {
+        color: red;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+      }
+      #title{
+        background-color: green;
+        border-radius: 50%;
+        font-size: .8rem;
+        padding: .1rem .4rem;
+        color: #ffffff;
+      }
     </style>
   </head>
   <body>
     <div>
-      <h1>TodoList</h1>
+      <h1>TodoList<sup id="title">0</sup></h1>
       <input
         type="text"
         id="todo"
         class="todo"
         placeholder="type you todo here."
       />
-      <span id="error"></span><br>
+      <span id="error"></span><br />
       <button class="add" onclick="add();">Add Todo</button><br /><br />
       <div class="htmlbox"></div>
     </div>
@@ -95,16 +102,20 @@
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
       }
       function add() {
-        let error = document.getElementById('error');
+        let error = document.getElementById("error");
+        let title = document.getElementById('title');
         let inputElement = document.querySelector(".todo");
         let inputvalue = inputElement.value;
-        if (inputElement.value === ''){
-          error.innerHTML = 'please fill the field first';
-        } else{
-          error.innerHTML = '';
-        list.push(inputvalue);
-        inputElement.value = "";
-        display();}
+        if (inputElement.value === "") {
+          error.innerHTML = "please fill the field first";
+        } else {
+          error.innerHTML = "";
+          list.push(inputvalue);
+          inputElement.value = "";
+          title.innerHTML = list.length;
+          console.log(list.length);
+          display();
+        }
       }
 
       display();
