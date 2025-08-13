@@ -66,11 +66,11 @@
         font-size: 0.8rem;
         margin-left: 0.5rem;
       }
-      #title{
+      #title {
         background-color: green;
         border-radius: 50%;
-        font-size: .8rem;
-        padding: .1rem .4rem;
+        font-size: 0.8rem;
+        padding: 0.1rem 0.4rem;
         color: #ffffff;
       }
     </style>
@@ -100,10 +100,11 @@
           HTMLelement += element;
         }
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
+        title.innerHTML = list.length;
       }
       function add() {
         let error = document.getElementById("error");
-        let title = document.getElementById('title');
+        let title = document.getElementById("title");
         let inputElement = document.querySelector(".todo");
         let inputvalue = inputElement.value;
         if (inputElement.value === "") {
@@ -113,7 +114,6 @@
           list.push(inputvalue);
           inputElement.value = "";
           title.innerHTML = list.length;
-          console.log(list.length);
           display();
         }
       }
