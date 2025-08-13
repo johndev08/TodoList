@@ -96,7 +96,7 @@
         let HTMLelement = "";
         for (let i = 0; i < list.length; i++) {
           let index = list[i];
-          let element = `<p style='display:flex;justify-content: space-between; margin: .7rem .5rem ;'>${index}<button onclick='list.splice(${i},1); display();           localStorage.setItem("saved", JSON.stringify(list));' style='background-color: red;color: #ffffff;border: none; padding: 5px 10px'>Delete</button></p>`;
+          let element = `<p style='display:flex;justify-content: space-between; margin: .7rem .5rem ;'>${index}<button onclick='list.splice(${i},1); display();localStorage.setItem("saved", JSON.stringify(list));' style='background-color: red;color: #ffffff;border: none; padding: 5px 10px'>Delete</button></p>`;
           HTMLelement += element;
         }
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
