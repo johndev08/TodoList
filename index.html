@@ -73,6 +73,15 @@
         padding: 0.1rem 0.4rem;
         color: #ffffff;
       }
+      
+      .para{
+        display:flex;
+        justify-content: space-between;
+        margin: .6rem .1rem ;background-color: #f3f3f3;
+      }
+      .para:hover{
+        background-color: #d8d8d8;
+      }
     </style>
   </head>
   <body>
@@ -90,18 +99,45 @@
     </div>
 
     <script>
-      let list = JSON.parse(localStorage.getItem('saved')) || [];
+      let list = JSON.parse(localStorage.getItem("saved")) || [];
 
       function display() {
         let HTMLelement = "";
         for (let i = 0; i < list.length; i++) {
           let index = list[i];
-          let element = `<p style='display:flex;justify-content: space-between; margin: .7rem .5rem ;'>${index}<button onclick='list.splice(${i},1); display();localStorage.setItem("saved", JSON.stringify(list));' style='background-color: red;color: #ffffff;border: none; padding: 5px 10px'>Delete</button></p>`;
+          let element = `<div class='para' style=' '>
+                            ${index}
+                            <div>
+                            <button onclick="
+                                        list[${i}] = prompt('Enter new value:', list[${i}]);
+                                        localStorage.setItem('saved', JSON.stringify(list));
+                                        display();"
+                                    style='
+                                    background-color: #52c55b;
+                                    color: #ffffff;
+                                    border: none; 
+                                    padding: 5px 10px'
+                              >Edit
+                            </button>
+                            <button 
+                              onclick='list.splice(${i},1);
+                              localStorage.setItem("saved", JSON.stringify(list));
+                              display();' 
+                              style='
+                                    background-color: red;
+                                    color: #ffffff;
+                                    border: none; 
+                                    padding: 5px 10px'>
+                              Delete
+                            </button>
+                            </div>
+                          </div>`;
           HTMLelement += element;
         }
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
         title.innerHTML = list.length;
       }
+
       function add() {
         let error = document.getElementById("error");
         let title = document.getElementById("title");
@@ -114,10 +150,11 @@
           list.push(inputvalue);
           inputElement.value = "";
           title.innerHTML = list.length;
-          localStorage.setItem("saved", JSON.stringify(list))
+          localStorage.setItem("saved", JSON.stringify(list));
           display();
         }
       }
+
       display();
     </script>
   </body>
