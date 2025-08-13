@@ -50,7 +50,7 @@
         background-color: #2563eb;
         color: #ffffff;
         border: none;
-        margin-top: 0.5rem;
+        margin-top: 0.2rem;
       }
       .add:hover {
         background-color: #1e40af;
@@ -61,7 +61,10 @@
         height: 400px;
         overflow-y: scroll;
       }
-     
+     span{
+      color: red;
+      font-size: .8rem;
+     }
     </style>
   </head>
   <body>
@@ -73,6 +76,7 @@
         class="todo"
         placeholder="type you todo here."
       />
+      <span id="error"></span><br>
       <button class="add" onclick="add();">Add Todo</button><br /><br />
       <div class="htmlbox"></div>
     </div>
@@ -90,11 +94,13 @@
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
       }
       function add() {
+        let error = document.getElementById('error');
         let inputElement = document.querySelector(".todo");
         let inputvalue = inputElement.value;
         if (inputElement.value === ''){
-          alert('please fill the field first');
+          error.innerHTML = 'please fill the field first';
         } else{
+          error.innerHTML = '';
         list.push(inputvalue);
         inputElement.value = "";
         display();}
