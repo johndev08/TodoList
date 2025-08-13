@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+    <style>
+      :root {
+        --light-bg: #eeeeee;
+        --card: #ffffff;
+        --primary: #8787ff;
+        --text-color-light: #ffffff;
+        --text-color-dark: #030303;
+        --font: sans-serif;
+      }
+      body {
+        background-color: var(--light-bg);
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: grid;
+      }
+      body > div {
+        margin: auto;
+        border: #d1d5db;
+        background-color: var(--card);
+        color: var(--text-color-dark);
+        font-family: var(--font);
+        margin-top: 5rem;
+        border-radius: 0.5rem;
+        padding: 2rem;
+        width: 400px;
+      }
+      input {
+        background-color: #f1f1f1;
+        border: #cbd5e1;
+      }
+      h1 {
+        color: #1f2937;
+      }
+      .todo,
+      .add {
+        padding: 10px 15px;
+      }
+      .todo {
+        width: 270px;
+      }
+      .add {
+        background-color: #2563eb;
+        color: #ffffff;
+        border: none;
+      }
+      .add:hover {
+        background-color: #1e40af;
+      }
+      .htmlbox {
+        border: 1px solid #bebebe;
+        padding: 0 1rem;
+        height: 300px;
+        overflow-y: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>TodoList</h1>
+      <input
+        type="text"
+        id="todo"
+        class="todo"
+        placeholder="type you todo here."
+      />
+      <button class="add" onclick="add();">Add Todo</button><br /><br />
+      <div class="htmlbox"></div>
+    </div>
+
+    <script>
+      let list = [];
+
+      function display() {
+        let HTMLelement = "";
+        for (let i = 0; i < list.length; i++) {
+          let index = list[i];
+          let element = `<p>${index}<button>Delete</button></p>`;
+          HTMLelement += element;
+        }
+        document.querySelector(".htmlbox").innerHTML = HTMLelement;
+      }
+      function add() {
+        let inputElement = document.querySelector(".todo");
+        let inputvalue = inputElement.value;
+        list.push(inputvalue);
+        inputElement.value = "";
+        display();
+      }
+
+      display();
+    </script>
+  </body>
+</html>
