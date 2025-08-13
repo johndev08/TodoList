@@ -57,10 +57,11 @@
       }
       .htmlbox {
         border: 1px solid #bebebe;
-        padding: 0 1rem;
+        padding: 0 .5rem;
         height: 400px;
         overflow-y: scroll;
       }
+     
     </style>
   </head>
   <body>
@@ -83,7 +84,7 @@
         let HTMLelement = "";
         for (let i = 0; i < list.length; i++) {
           let index = list[i];
-          let element = `<p>${index}<button>Delete</button></p>`;
+          let element = `<p style='display:flex;justify-content: space-between; margin: .7rem .5rem ;'>${index}<button>Delete</button></p>`;
           HTMLelement += element;
         }
         document.querySelector(".htmlbox").innerHTML = HTMLelement;
